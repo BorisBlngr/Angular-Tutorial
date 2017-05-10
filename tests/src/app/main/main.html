@@ -1,0 +1,42 @@
+
+Bonjour nous sommes le : {{main.date}}
+<br>
+Bonjour nous sommes le : {{main.date | date:'dd/MM/yyyy'}}
+
+<br><br><br>
+Name : <input type="text" ng-model="main.name">
+<br><br>
+
+<div ng-if="main.name">
+  Coucou toi {{ main.name }} !
+</div>
+
+<br>
+
+<!--{{main.array}}-->
+<button ng-click="main.clearInput()"> Clear</button>
+
+<br><br>
+<div class="arrayLine"
+     ng-class="{'licorne' : $even}"
+     ng-repeat="element in main.array | orderBy track by $index">
+  <!-- $odd, $even, $index, $first, $last-->
+  {{ element }} <span ng-if="!$last">,</span>
+</div>
+<br><br>
+Exci-tweet
+<div>
+  <button ng-click="main.getTweets()">Actualiser</button>
+  <button ng-click="main.goToNewTweet()">Nouveau Tweet</button>
+  <br> <input type="text" ng-model="main.page"> <button ng-click="main.goToPage()">go to</button>
+
+  <div class="arrayLine"
+       ng-class="{'licorne' : $even}"
+       ng-repeat="tweet in main.tweets">
+    <!-- $odd, $even, $index, $first, $last-->
+    De : <b>{{ tweet.name }}</b>
+    <br>{{ tweet.message }}
+    <br> <button ng-click="main.deleteTweet(tweet)"> Delete Tweet </button> the <i>{{ tweet.date }}</i>
+  </div>
+</div>
+
